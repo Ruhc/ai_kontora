@@ -1,0 +1,26 @@
+# S2T (Source-to-Target) Mapping — МегаБайт Daily Sales Mart
+
+> Шаблон маппинга для витрины `mart.daily_order_kpis`.
+> Заполните пустые строки в соответствии с бизнес-требованиями.
+
+| target_table | target_column | data_type | source_system | source_table | source_column | transformation_rule | business_rule | is_nullable | default_value | incremental_strategy |
+|---|---|---|---|---|---|---|---|---|---|---|
+| mart.daily_order_kpis | order_date | DATE | МегаБайт ODS | ods.orders | order_timestamp | `CAST(order_timestamp AS DATE)` | Дата оформления заказа по московскому времени (UTC+3) | NO | — | append by order_date |
+| mart.daily_order_kpis | store_id | VARCHAR(8) | МегаБайт ODS | ods.orders | store_code | `UPPER(TRIM(store_code))` | Идентификатор магазина в формате M-NNN | NO | — | — |
+| mart.daily_order_kpis | gross_revenue | NUMERIC(12,2) | МегаБайт ODS | ods.order_lines | line_total | `SUM(line_total) GROUP BY order_date, store_id` | Сумма до вычета скидок и возвратов | NO | 0.00 | — |
+| | | | | | | | | | | |
+| | | | | | | | | | | |
+| | | | | | | | | | | |
+| | | | | | | | | | | |
+| | | | | | | | | | | |
+| | | | | | | | | | | |
+| | | | | | | | | | | |
+| | | | | | | | | | | |
+| | | | | | | | | | | |
+
+## Инструкции для участника
+
+1. Определите оставшиеся целевые колонки витрины (net_revenue, returns_amt, receipt_count, avg_check, plan_completion_pct, и т.д.).
+2. Укажите источник, правило трансформации и бизнес-правило для каждой колонки.
+3. Продумайте стратегию инкрементальной загрузки: append, upsert или full refresh.
+4. Обратите внимание на nullable-поля и значения по умолчанию.
