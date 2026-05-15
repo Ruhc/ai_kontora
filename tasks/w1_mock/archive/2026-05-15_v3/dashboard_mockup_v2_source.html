@@ -157,58 +157,7 @@
     .f-toggle:hover { border-color: var(--accent); }
     .f-toggle input { accent-color: var(--accent); margin: 0; }
 
-    .f-multi {
-      min-width: 140px; min-height: 30px; max-height: 56px;
-      background: var(--bg-filter); border: 1px solid var(--border-mid);
-      border-radius: var(--radius-sm); color: var(--text-primary);
-      font-size: 12px; padding: 4px 6px;
-    }
-    .f-multi option { padding: 4px; }
-
-    .sys-banner {
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-      padding: 8px 14px; margin-bottom: 12px;
-      background: rgba(240,180,41,0.08);
-      border: 1px solid rgba(240,180,41,0.25);
-      border-radius: var(--radius-sm);
-      font-size: 11px; color: var(--text-second);
-    }
-    .sys-banner .tag {
-      padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 10px;
-      background: var(--yellow-bg); color: var(--yellow);
-    }
-
-    .role-bar {
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-      margin-bottom: 12px; padding: 8px 12px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-    }
-    .role-bar label { font-size: 11px; color: var(--text-muted); }
-    .role-pill {
-      padding: 5px 12px; border-radius: 16px; font-size: 11px; font-weight: 600;
-      border: 1px solid var(--border-mid); background: var(--bg-filter);
-      color: var(--text-second); cursor: pointer;
-    }
-    .role-pill.active {
-      border-color: var(--accent); color: var(--text-primary);
-      background: rgba(99,102,241,0.15);
-    }
-
-    .finebi-tag {
-      display: inline-block; margin-left: 8px; padding: 1px 6px;
-      border-radius: 4px; font-size: 9px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .4px;
-      color: var(--accent); border: 1px solid rgba(99,102,241,0.35);
-      background: rgba(99,102,241,0.08); vertical-align: middle;
-    }
-
-    .plan-missing {
-      background: rgba(136,150,179,0.08) !important;
-    }
-    .st-badge.noplan { background: rgba(136,150,179,0.15); color: var(--text-muted); }
-
-  /* ─── KPI Row ──────────────────────────────────────────── */
+    /* ─── KPI Row ──────────────────────────────────────────── */
     .kpi-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -506,7 +455,7 @@
       <div class="logo">МБ</div>
       <div>
         <div class="h-title">Ежедневные продажи</div>
-        <div class="h-sub">МегаБайт · v3 · макет под Fine BI · 120 магазинов · 5 регионов</div>
+        <div class="h-sub">МегаБайт · Операционный мониторинг · 120 магазинов · 5 регионов</div>
       </div>
     </div>
     <div class="header-right">
@@ -523,76 +472,61 @@
     </div>
   </header>
 
-  <div class="sys-banner">
-    <span class="tag">T+1</span>
-    Данные за вчера (D-1), не real-time · ETL 06:30 · SLA дашборда 08:00 МСК · горизонт 12 мес.
-  </div>
-
-  <div class="role-bar">
-    <label>Роль (RLS Fine BI):</label>
-    <span class="role-pill active">Операционный · все регионы</span>
-    <span class="role-pill">Регион · свой регион</span>
-    <span class="role-pill">Категории · свои категории</span>
-    <span class="role-pill">IT · полный доступ</span>
-    <span style="font-size:10px;color:var(--text-muted);margin-left:auto">Кэш 15 мин для роли «Категории»</span>
-  </div>
-
   <!-- ─── Filters ─────────────────────────────────────────── -->
   <div class="filters">
     <span class="f-label">Фильтры</span>
-    <div class="f-group">
-      <label>Месяц</label>
-      <select id="filterMonth">
-        <option value="2024-03" selected>Март 2024</option>
-        <option value="2024-02">Февраль 2024</option>
-        <option value="2024-01">Январь 2024</option>
-      </select>
-    </div>
 
     <div class="f-group">
-      <label>Дата (D-1)</label>
-      <input type="date" id="filterDate" value="2024-03-20">
+      <label>Дата</label>
+      <input type="date" value="2024-03-20">
     </div>
 
     <div class="f-sep"></div>
 
     <div class="f-group">
       <label>Регион</label>
-      <select id="filterRegion" class="f-multi" multiple size="3" title="Fine BI: множественный выбор">
-        <option value="all" selected>Все регионы</option>
-        <option value="msk">Москва</option>
-        <option value="nw">Северо-Запад</option>
-        <option value="sib">Сибирь</option>
-        <option value="vol">Поволжье</option>
-        <option value="south">Юг</option>
+      <select>
+        <option>Все регионы</option>
+        <option>Москва</option>
+        <option>Северо-Запад</option>
+        <option>Сибирь</option>
+        <option>Поволжье</option>
+        <option>Юг</option>
       </select>
     </div>
 
     <div class="f-group">
       <label>Магазин</label>
-      <select id="filterStore"></select>
+      <select>
+        <option>Все магазины (116)</option>
+        <option>M-104 МегаБайт Центральный</option>
+        <option>M-217 МегаБайт Невский</option>
+        <option>M-089 МегаБайт Левобережный</option>
+        <option>M-312 МегаБайт Волжский</option>
+        <option>M-055 МегаБайт Южный</option>
+      </select>
     </div>
 
     <div class="f-group">
       <label>Категория</label>
-      <select id="filterCategory" class="f-multi" multiple size="3" title="Fine BI: множественный выбор">
-        <option value="all" selected>Все категории</option>
-        <option value="milk">Молоко</option>
-        <option value="bread">Хлеб</option>
-        <option value="drinks">Напитки</option>
-        <option value="snacks">Снеки</option>
-        <option value="fresh">Фреш</option>
-        <option value="confect">Кондитерка</option>
-        <option value="frozen">Замороженные</option>
-        <option value="chem">Бытовая химия</option>
+      <select>
+        <option>Все категории</option>
+        <option>Молоко</option>
+        <option>Хлеб</option>
+        <option>Напитки</option>
+        <option>Снеки</option>
+        <option>Фреш</option>
+        <option>Кондитерка</option>
+        <option>Замороженные</option>
+        <option>Бытовая химия</option>
       </select>
     </div>
 
     <div class="f-sep"></div>
 
     <label class="f-toggle">
-      <input type="checkbox" id="filterWorkdays" checked>
-      Только рабочие дни (пн–пт, MVP)
+      <input type="checkbox" checked>
+      Только рабочие дни
     </label>
   </div>
 
@@ -640,7 +574,7 @@
         <span class="delta warn">↑ 0.2 пп</span>
         <span>vs прошл. нед.</span>
       </div>
-      <div class="kpi-note">SUM(returns_amt) / SUM(gross_revenue) · порог &gt;5% (условное форматирование Fine BI)</div>
+      <div class="kpi-note">SUM(returns_amt) / SUM(gross_revenue) · порог тревоги: 5%</div>
     </div>
 
     <!-- 5. Магазины с продажами -->
@@ -667,8 +601,8 @@
   <div class="panel" style="margin-bottom:12px">
     <div class="panel-hdr">
       <div>
-        <div class="panel-title">Дневная выручка — факт vs прошлый год (YoY)<span class="finebi-tag">Fine BI · Line</span></div>
-        <div class="panel-sub">Рабочие дни · март · те же даты 2024 и 2023 · красные точки — дни mtd_achievement &lt; 90% (светофор)</div>
+        <div class="panel-title">Дневная выручка — факт vs прошлый год (YoY)</div>
+        <div class="panel-sub">Рабочие дни · март · те же даты 2024 и 2023 · красные точки — дни ниже −10% от среднего</div>
       </div>
       <div class="legend">
         <div class="leg-item"><div class="leg-dot" style="background:rgba(99,102,241,.95)"></div>Факт 2024</div>
@@ -683,7 +617,7 @@
     <div class="panel">
       <div class="panel-hdr">
         <div>
-          <div class="panel-title">Линейный прогноз выполнения плана — март 2024<span class="finebi-tag">Fine BI · Line</span></div>
+          <div class="panel-title">Линейный прогноз выполнения плана — март 2024</div>
           <div class="panel-sub">Накопительный факт MTD + экстраполяция на оставшиеся 6 раб. дн.</div>
         </div>
         <div class="legend">
@@ -702,7 +636,7 @@
     </div>
     <div class="panel">
       <div class="panel-hdr">
-        <div><div class="panel-title">Сравнение недель<span class="finebi-tag">Fine BI · Column</span></div><div class="panel-sub">11–15.03 vs 04–08.03</div></div>
+        <div><div class="panel-title">Сравнение недель</div><div class="panel-sub">11–15.03 vs 04–08.03</div></div>
       </div>
       <div class="chart-wrap medium"><canvas id="weekCompareChart"></canvas></div>
     </div>
@@ -712,7 +646,7 @@
 
   <div class="story-row cols-3">
     <div class="panel problem-panel">
-      <div class="panel-hdr"><div><div class="panel-title">Слабые дни<span class="finebi-tag">Fine BI · Table</span></div><div class="panel-sub">mtd_achievement &lt; 90% (светофор)</div></div><div class="day-chip">3</div></div>
+      <div class="panel-hdr"><div><div class="panel-title">Слабые дни</div><div class="panel-sub">ниже −10% от среднего</div></div><div class="day-chip">3</div></div>
       <ul class="problem-list">
         <li class="alert"><div><div class="name">08.03</div><div class="meta">−18%</div></div><div class="metric" style="color:var(--red)">1,92 млн</div><div class="pct">82% YoY</div></li>
         <li class="alert"><div><div class="name">15.03</div><div class="meta">−14%</div></div><div class="metric" style="color:var(--red)">2,01 млн</div><div class="pct">88% YoY</div></li>
@@ -720,7 +654,7 @@
       </ul>
     </div>
     <div class="panel problem-panel">
-      <div class="panel-hdr"><div><div class="panel-title">Слабые магазины<span class="finebi-tag">Fine BI · Table</span></div><div class="panel-sub">mtd_achievement &lt; 90% · топ-5</div></div></div>
+      <div class="panel-hdr"><div><div class="panel-title">Слабые магазины</div><div class="panel-sub">топ-5 по % плана</div></div></div>
       <ul class="problem-list">
         <li class="alert"><div><div class="name">M-089</div><div class="meta">Юг</div></div><div class="metric" style="color:var(--red)">62%</div><div class="pct">−380 К</div></li>
         <li class="alert"><div><div class="name">M-217</div><div class="meta">С-Запад</div></div><div class="metric" style="color:var(--red)">68%</div><div class="pct">−290 К</div></li>
@@ -730,7 +664,7 @@
       </ul>
     </div>
     <div class="panel problem-panel">
-      <div class="panel-hdr"><div><div class="panel-title">Слабые категории<span class="finebi-tag">Fine BI · Table</span></div><div class="panel-sub">mtd_achievement &lt; 70% (критично)</div></div></div>
+      <div class="panel-hdr"><div><div class="panel-title">Слабые категории</div><div class="panel-sub">&lt; 85% ожидаемого</div></div></div>
       <ul class="problem-list">
         <li class="alert"><div><div class="name">Замороженные</div><div class="meta">критично</div></div><div class="metric" style="color:var(--red)">68,6%</div><div class="pct">−112 К</div></li>
         <li class="alert"><div><div class="name">Фреш</div><div class="meta">списания</div></div><div class="metric" style="color:var(--red)">76,9%</div><div class="pct">−84 К</div></li>
@@ -748,7 +682,7 @@
     <div class="panel">
       <div class="panel-hdr">
         <div>
-          <div class="panel-title">Выручка по регионам — Факт vs Ожидаемый MTD<span class="finebi-tag">Fine BI · Grouped Bar</span></div>
+          <div class="panel-title">Выручка по регионам — Факт vs Ожидаемый MTD</div>
           <div class="panel-sub">
             Март 2024 · Ожидаемый MTD = план × (15 раб. дн. / 21 раб. дн.) · только is_active = TRUE
           </div>
@@ -776,8 +710,8 @@
     <div class="panel">
       <div class="panel-hdr">
         <div>
-          <div class="panel-title">Детализация по категориям<span class="finebi-tag">Fine BI · Cross Table</span></div>
-          <div class="panel-sub">mart.fact_sales_daily + dim_sku + fact_plan_monthly · март 2024</div>
+          <div class="panel-title">Детализация по категориям</div>
+          <div class="panel-sub">Факт MTD · Ожидаем. MTD · Откл. · Статус · март 2024</div>
         </div>
         <div style="font-size:11px;color:var(--text-muted);flex-shrink:0;margin-top:2px">
           8 категорий
@@ -836,11 +770,6 @@
               <td>90.0%</td>
               <td><span class="st-badge normal">— В норме</span></td>
             </tr>
-            <tr class="plan-missing">
-              <td class="cat-name">Кондитерка (Юг)</td>
-              <td>120 000</td><td>—</td><td>—</td><td>—</td>
-              <td><span class="st-badge noplan">○ Нет плана</span></td>
-            </tr>
             <tr>
               <td class="cat-name">Бытовая химия</td>
               <td>180 000</td>
@@ -880,7 +809,7 @@
       ETL: 06:30 МСК · <strong>SLA: 08:00 МСК</strong> ·
       Горизонт: 12 мес. rolling ·
       Только активные магазины (is_active = TRUE) ·
-      Данные: T+1 · Fine BI Direct · кэш 15 мин (категории)
+      Данные: T+1
     </div>
     <div style="color:var(--text-muted)">
       % плана = факт_MTD / (план_месяц × раб_дней_MTD / раб_дней_месяца) × 100
@@ -890,41 +819,6 @@
 </div>
 
 <script>
-
-  const STORES = [
-    { id: 'all', label: 'Все магазины (116)', regions: ['all','msk','nw','sib','vol','south'] },
-    { id: 'M-104', label: 'M-104 Центральный', regions: ['msk'] },
-    { id: 'M-217', label: 'M-217 Невский', regions: ['nw'] },
-    { id: 'M-089', label: 'M-089 Левобережный', regions: ['south'] },
-    { id: 'M-312', label: 'M-312 Волжский', regions: ['vol'] },
-    { id: 'M-055', label: 'M-055 Южный', regions: ['south'] },
-  ];
-  function selectedRegions() {
-    const sel = document.getElementById('filterRegion');
-    if (!sel) return ['all'];
-    return Array.from(sel.selectedOptions).map(o => o.value);
-  }
-  function refreshStores() {
-    const storeSel = document.getElementById('filterStore');
-    if (!storeSel) return;
-    const regs = selectedRegions();
-    const all = regs.includes('all');
-    storeSel.innerHTML = '';
-    STORES.filter(s => all || s.regions.some(r => regs.includes(r))).forEach(s => {
-      const o = document.createElement('option');
-      o.value = s.id; o.textContent = s.label;
-      storeSel.appendChild(o);
-    });
-  }
-  const regionSel = document.getElementById('filterRegion');
-  if (regionSel) { regionSel.addEventListener('change', refreshStores); refreshStores(); }
-  document.querySelectorAll('.role-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      document.querySelectorAll('.role-pill').forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-    });
-  });
-
   const regions = [
     { label: 'Москва',    actual: 1180000, expected: 1125000, pct: 104.9 },
     { label: 'С-Запад',   actual:  620000, expected:  680000, pct:  91.2 },
